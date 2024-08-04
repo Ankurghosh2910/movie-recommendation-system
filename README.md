@@ -57,7 +57,7 @@ To run this project locally, follow these steps:
 
 ## Contributing
 
-A special thanks to [Tanmay Kule]([https://github.com/tanmaykule](https://github.com/oblionC)) for his valuable assistance in this project.
+A special thanks to [Tanmay Kule](https://github.com/oblionC) for his valuable assistance in this project.
 
 Feel free to contribute to this project by submitting issues or pull requests. Your contributions are highly appreciated!
 
