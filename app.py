@@ -3,11 +3,26 @@ import pickle
 import pandas as pd
 import requests
 
-def fetch_poster(movie_id):
-    response = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US')
-    data = response.json()
-    return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
 
+def fetch_poster(movie_id):
+    try:
+        response = requests.get(
+            f'https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US')
+        data = response.json()
+
+        # Print the data for debugging
+        print(data)  # Remove or comment this line in production
+
+        # Check if 'poster_path' is in the response data
+        if 'poster_path' in data:
+            return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+        else:
+            return "https://via.placeholder.com/500x750?text=No+Poster+Available"
+
+    except Exception as e:
+        # Handle exceptions
+        print(f"Error fetching poster: {e}")
+        return "https://via.placeholder.com/500x750?text=Error+Fetching+Poster"
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
